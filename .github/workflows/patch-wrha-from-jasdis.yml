@@ -1,0 +1,115 @@
+name: Patch WRHA from JASDIS services
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-wrha-from-jasdis.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout WRHA
+        uses: actions/checkout@v4
+
+      - name: Clone JASDIS Resource Centre
+        run: git clone --depth 1 https://github.com/jasdis876/JASDIS-Resource-Center.git /tmp/jasdis
+
+      - name: Patch service finder and manual links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, json
+          from collections import Counter
+
+          wrha_path=Path('index.html')
+          jas_path=Path('/tmp/jasdis/index.html')
+          wrha=wrha_path.read_text(encoding='utf-8')
+          jas=jas_path.read_text(encoding='utf-8')
+
+          def extract_const(name):
+              key=f'const {name}='
+              i=jas.find(key)
+              if i<0: raise RuntimeError(f'{name} not found')
+              j=i+len(key); depth=0; quote=None; esc=False
+              for k in range(j,len(jas)):
+                  ch=jas[k]
+                  if quote:
+                      if esc: esc=False
+                      elif ch=='\\': esc=True
+                      elif ch==quote: quote=None
+                      continue
+                  if ch in "'\"`": quote=ch; continue
+                  if ch in '[{(': depth+=1
+                  elif ch in ']})': depth-=1
+                  elif ch==';' and depth==0: return jas[i:k+1]
+              raise RuntimeError(f'Unterminated {name}')
+
+          health=extract_const('HEALTH_CENTRES')
+          treatment=extract_const('TREATMENT_SITES')
+          prep=extract_const('PREP_SITES')
+          points=extract_const('PARISH_POINTS')
+          health_json=json.loads(health.split('=',1)[1][:-1])
+          counts=Counter(x['parish'] for x in health_json)
+          expected={'Hanover':20,'Westmoreland':20,'St. James':20,'Trelawny':18,'St. Elizabeth':23,'Manchester':18,'Clarendon':32,'St. Ann':29,'St. Catherine':25,'Kingston & St. Andrew':40,'St. Mary':30,'Portland':18,'St. Thomas':17}
+          if not all(counts.get(k)==v for k,v in expected.items()):
+              raise RuntimeError(f'Unexpected parish counts: {counts}')
+
+          css_start=jas.index('/* Services/map */')
+          css_end=jas.index('/* Learning/media */',css_start)
+          service_css=jas[css_start:css_end]
+          service_css=(service_css.replace('var(--purple3)','var(--blue2)').replace('var(--purple)','var(--blue)').replace('var(--gold)','#ffd42a').replace('rgba(65,28,92,.28)','rgba(11,79,145,.28)').replace('rgba(65,28,92,.3)','rgba(11,79,145,.3)').replace('rgba(249,217,51,.25)','rgba(21,155,210,.20)').replace('linear-gradient(145deg,#17101f,#29163b)','linear-gradient(145deg,#07365f,#0b4f91)'))
+          service_css += '\n.side-card .btn.gold{background:#ffd42a!important;color:#172b3a!important;border-color:#ffd42a!important}.side-card .btn:not(.gold){background:#fff;color:var(--blue);border-color:#fff}.facility-type{font-size:6px;font-weight:900;background:#eef7fb;color:var(--blue);padding:4px 6px;border-radius:999px}.loc-top{display:flex;justify-content:space-between;align-items:center;gap:7px}.loc-phone{font-weight:700}.status-note{color:#9b6e14!important}.loc-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:8px}.source-mini{border:0;background:transparent;color:var(--blue);font-size:6.5px;font-weight:900;padding:0;text-decoration:none}.services-wrap{max-width:var(--max);margin:auto;padding:70px 18px}.services-intro{max-width:760px;margin-bottom:27px}.services-intro .eyebrow{color:var(--cyan);font-size:9px;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.services-intro h2{margin:7px 0 8px;font-size:clamp(29px,4vw,46px);line-height:1;letter-spacing:-.045em;color:#123d5f}.services-intro p{margin:0;color:var(--muted);font-size:12px}@media(max-width:760px){.services-wrap{padding:52px 12px}}\n'
+          if '/* Services/map */' not in wrha:
+              wrha=wrha.replace('</style>',service_css+'\n</style>',1)
+
+          service_section='''<section class="alt" id="services"><div class="services-wrap"><div class="services-intro"><div class="eyebrow">Jamaica public health directory</div><h2>Find a health centre or CI service.</h2><p>Browse public primary-care facilities across all parishes. Switch to HIV/STI treatment or PrEP when you need a specialised service. Western Region facilities remain part of the same Jamaica-wide directory.</p></div><div class="services-grid reveal"><div class="map-card"><div class="map-head"><b>Select a parish</b><div class="map-mode"><button class="active" data-service-mode="all">All health centres</button><button data-service-mode="treatment">HIV/STI</button><button data-service-mode="prep">PrEP</button></div></div><div class="map-shell"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Jamaica_location_map.svg/960px-Jamaica_location_map.svg.png" alt="Map of Jamaica showing parish boundaries"><div id="parishPins"></div></div><div class="map-key"><span><i class="key-dot on"></i> locations listed</span><span><i class="key-dot off"></i> no match for current filter</span></div><div class="map-credit">Directory compiled from public Regional Health Authority/MOHW service listings. Kingston &amp; St. Andrew are shown together because SERHA publishes the KSA network as a combined service area. Facility schedules can change; call ahead when timing is important.</div></div><aside class="side-card"><small>SERVICE ACCESS</small><h3>One directory, all parishes.</h3><p>Search by health centre, community, parish or address. Public health centres are the default view; specialist HIV/STI and PrEP filters remain available.</p><div class="service-tip"><b>Looking for a CI?</b><br>Start with your nearest public health centre or select HIV/STI to identify specialised programme locations.</div><a class="btn gold" href="https://hstu.moh.gov.jm/prep-appointments/" target="_blank" rel="noopener">MOHW PrEP appointments</a><br><br><a class="btn" href="https://hstu.moh.gov.jm/treatment-sites-and-locations/" target="_blank" rel="noopener">Official HSTU directory</a></aside></div><div style="padding-top:10px"><div class="service-toolbar"><select id="parishFilter" aria-label="Select parish"></select><input id="locationSearch" type="search" placeholder="Search a health centre, community or address..." aria-label="Search locations"></div><div class="directory-title" id="directoryTitleWrap"><div><div class="eyebrow"><i></i> Directory</div><h3 id="directoryTitle">All public health centres</h3></div><span id="locationCount"></span></div><div class="location-list" id="locationList"></div></div></div></section>'''
+          wrha,n=re.subn(r'<section class="alt"><div class="section" id="services">.*?</div></section>',service_section,wrha,count=1,flags=re.S)
+          if n!=1 and 'One directory, all parishes.' not in wrha:
+              raise RuntimeError('Could not replace services section')
+
+          wrha,n=re.subn(r'const DIRECT_MANUAL_URLS=\{.*?\};','''const DIRECT_MANUAL_URLS={"prep":"./prep-handbook-2023.pdf","sti":"./sti-handbook-2026.pdf","tb":"./tuberculosis-manual.pdf","pmtct":"./pmtct-manual.pdf"};''',wrha,count=1,flags=re.S)
+          if n!=1: raise RuntimeError('Manual map not found')
+          wrha=wrha.replace('src="covers/${id}.png"','src="${id}.png"')
+
+          if 'const HEALTH_CENTRES=' not in wrha:
+              marker='const $=s=>document.querySelector(s);'
+              wrha=wrha.replace(marker,'\n'.join([health,treatment,prep,points])+'\n'+marker,1)
+          wrha=wrha.replace("const $=s=>document.querySelector(s); const esc=","const $=s=>document.querySelector(s); const $$=s=>[...document.querySelectorAll(s)]; const esc=",1)
+
+          wrha,n=re.subn(r'async function init\(\)\{.*?\}\nfunction renderManuals',"""async function init(){try{const k=await fetch('knowledge.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('knowledge.json '+r.status);return r.json()});APP.manuals=k.manuals;APP.pages=k.pages;APP.structured=k.structured;renderManuals();populateParishes();renderPins();renderLocations();}catch(e){console.error(e);$('#manualGrid').innerHTML='<p>Resource data could not load. Reconnect once and refresh.</p>';}}\nfunction renderManuals""",wrha,count=1,flags=re.S)
+          if n!=1: raise RuntimeError('Init block not found')
+
+          js_start=jas.index('const PARISH_ORDER=PARISH_POINTS.map')
+          js_end=jas.index("$('#locationSearch').oninput=renderLocations;",js_start)+len("$('#locationSearch').oninput=renderLocations;")
+          service_js=jas[js_start:js_end]
+          service_js=service_js.replace("source:'https://hstu.moh.gov.jm/treatment-sites-and-locations/'", "source:serviceMode==='treatment'?'https://hstu.moh.gov.jm/treatment-sites-and-locations/':'https://hstu.moh.gov.jm/prep-locations-2/'")
+          service_js=re.sub(r"\$\{x\.source\?`<button type=\"button\" class=\"source-mini\" data-embed-url=\"\$\{esc\(x\.source\)\}\" data-embed-title=\"Official facility source\">Official source</button>`:''\}", "${x.source?`<a class=\"source-mini\" href=\"${esc(x.source)}\" target=\"_blank\" rel=\"noopener\">Official source -></a>`:''}", service_js)
+          service_js=service_js.replace(';bindEmbeddedLinks()}', '}')
+          wrha,n=re.subn(r"function renderServices\(\)\{.*?\}\n\$\('#serviceSearch'\)\.addEventListener\('input',renderServices\);\$\('#parishFilter'\)\.addEventListener\('change',renderServices\);",service_js,wrha,count=1,flags=re.S)
+          if n!=1 and 'function serviceData()' not in wrha: raise RuntimeError('Service JS replacement failed')
+
+          wrha=re.sub(r"register\('\./sw\.js\?v=[^']+'\)","register('./sw.js?v=jasdis-services-20260920')",wrha)
+          required=['One directory, all parishes.','All health centres','const HEALTH_CENTRES=','./prep-handbook-2023.pdf','./sti-handbook-2026.pdf','./tuberculosis-manual.pdf','./pmtct-manual.pdf',"fetch('knowledge.json'"]
+          missing=[x for x in required if x not in wrha]
+          if missing: raise RuntimeError(f'QA missing: {missing}')
+          if 'drive.google.com/file/d/15Ag_' in wrha or 'drive.google.com/file/d/1Smuz' in wrha: raise RuntimeError('Old manual links remain')
+          if 'id="serviceSearch"' in wrha: raise RuntimeError('Old simple service finder remains')
+          wrha_path.write_text(wrha,encoding='utf-8')
+          print('QA passed:',len(health_json),'public health centres')
+          PY
+
+      - name: Commit patched index
+        run: |
+          git config user.name "ChatGPT WRHA patch"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Match Find Services to JASDIS and fix PDF manuals"
+            git push
+          fi
