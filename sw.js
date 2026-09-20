@@ -1,4 +1,4 @@
-const CACHE="wrha-hiv-sti-tb-hub-v3";
+const CACHE="wrha-hiv-sti-tb-hub-v4";
 const SHELL=[
   "./",
   "./index.html",
@@ -12,6 +12,7 @@ const SHELL=[
   "./assets/qr-partner.png",
   "./assets/qr-hstu.png",
   "./icons/icon-192.png",
+  "./icons/icon-256.png",
   "./icons/icon-512.png",
   "./covers/prep.png",
   "./covers/sti.png",
@@ -44,9 +45,26 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   const request = event.request;
   if (request.method !== "GET") return;
-
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+
+  const isFreshCritical = request.mode === "navigate" ||
+    /\/(?:index\.html|manifest\.webmanifest|data\/knowledge\.json|data\/services\.json)$/.test(url.pathname);
+
+  if (isFreshCritical) {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE).then(cache => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request).then(cached => cached || caches.match("./index.html")))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(request).then(cached => {
@@ -59,14 +77,11 @@ self.addEventListener("fetch", event => {
           }
           return response;
         })
-        .catch(() => {
-          if (request.mode === "navigate") return caches.match("./index.html");
-          return new Response("This resource is not available offline yet.", {
-            status: 503,
-            statusText: "Offline",
-            headers: {"Content-Type": "text/plain; charset=utf-8"}
-          });
-        });
+        .catch(() => new Response("This resource is not available offline yet.", {
+          status: 503,
+          statusText: "Offline",
+          headers: {"Content-Type": "text/plain; charset=utf-8"}
+        }));
     })
   );
 });
