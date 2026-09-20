@@ -1,0 +1,127 @@
+name: Refine WRHA UI from JASDIS
+
+on:
+  push:
+    paths:
+      - '.github/workflows/refine-wrha-ui.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout WRHA
+        uses: actions/checkout@v4
+
+      - name: Clone JASDIS deployment source
+        run: git clone --depth 1 https://github.com/jasdis876/JASDIS-Resource-Center.git /tmp/jasdis
+
+      - name: Apply requested UI refinements
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          jas=Path('/tmp/jasdis/index.html').read_text(encoding='utf-8')
+
+          # --- 1. Programme targets: shorter, clearer, to the point ---
+          target_section='''<section class="alt"><div class="section" id="targets"><div class="section-head">
+          <div class="eyebrow">Programme monitoring</div>
+          <h2>Key programme targets</h2>
+          <p>Four quick reminders for CI/DIO monitoring.</p>
+          </div><div class="target-grid">
+          <article class="target-card"><div class="metric">â¥90%</div><h3>STI / FP HIV testing</h3><p>Eligible clients tested by Month 6.</p><small>Month 3: â¥75% Â· Then progress toward 100%.</small></article>
+          <article class="target-card"><div class="metric">â¥80%</div><h3>Hospital PITC</h3><p>Eligible admissions tested by Month 6.</p><small>Track missed testing opportunities.</small></article>
+          <article class="target-card"><div class="metric">STI</div><h3>Clinic documentation</h3><p>Record Facility + Clinic correctly.</p><small>Use âSTIâ for STI clinic visits.</small></article>
+          <article class="target-card"><div class="metric">2026</div><h3>STI management</h3><p>Follow the STI Handbook.</p><small>Includes BV and candidiasis/yeast where applicable.</small></article>
+          </div></div></section>'''
+          s,n=re.subn(r'<section class="alt"><div class="section" id="targets">.*?</div></div></section>',target_section,s,count=1,flags=re.S)
+          if n!=1: raise RuntimeError('Target section not found')
+
+          # --- 2. Service directory: do not show facilities until a parish is selected ---
+          old_pop=re.compile(r"function populateParishes\(\)\{.*?\}\nfunction renderPins",re.S)
+          new_pop="""function populateParishes(){const cur=$('#parishFilter').value||'';$('#parishFilter').innerHTML='<option value=\"\">Select a parish</option>'+PARISH_ORDER.map(p=>`<option value=\"${esc(p)}\">${esc(p)}</option>`).join('');$('#parishFilter').value=PARISH_ORDER.includes(cur)?cur:''}\nfunction renderPins"""
+          s,n=old_pop.subn(new_pop,s,count=1)
+          if n!=1: raise RuntimeError('populateParishes not found')
+
+          old_render=re.compile(r"function renderLocations\(\)\{.*?\}\n\$\$\('\[data-service-mode\]'\)",re.S)
+          new_render=r'''function renderLocations(){const p=$('#parishFilter').value;const q=$('#locationSearch').value.trim().toLowerCase();const titles={all:'Public health centres',treatment:'HIV/STI treatment & programme locations',prep:'PrEP locations'};if(!p){$('#directoryTitle').textContent='Select a parish';$('#locationCount').textContent='';$('#locationList').innerHTML='<div class="empty">Select a parish on the map or from the menu to view locations.</div>';$('#locationSearch').disabled=true;$('#locationSearch').placeholder='Select a parish first';return}$('#locationSearch').disabled=false;$('#locationSearch').placeholder='Search this parishâ¦';const arr=serviceData().filter(x=>x.parish===p&&`${x.parish} ${x.name} ${x.address||''} ${x.phone||''} ${x.type||''} ${x.district||''} ${x.region||''}`.toLowerCase().includes(q));$('#directoryTitle').textContent=titles[serviceMode];$('#locationCount').textContent=`${arr.length} location${arr.length===1?'':'s'} in ${p}`;$('#locationList').innerHTML=arr.length?arr.map(x=>`<article class="loc"><div class="loc-top"><small>${esc(x.parish)}${x.region?' Â· '+esc(x.region):''}</small>${x.type?`<span class="facility-type">${esc(x.type)}</span>`:''}</div><b>${esc(x.name)}</b><span>${esc(x.address||'Address not published in the source listing')}</span>${x.phone?`<span class="loc-phone">â ${esc(x.phone)}</span>`:''}${x.district?`<em>${esc(x.district)} Health District</em>`:''}${x.status?`<em class="status-note">${esc(x.status)}</em>`:''}<div class="loc-actions"><a class="directions-link" href="${mapsDirectionsUrl(x)}" target="_blank" rel="noopener">Google directions â</a>${x.source?`<a class="source-mini" href="${esc(x.source)}" target="_blank" rel="noopener">Official source â</a>`:''}</div></article>`).join(''):'<div class="empty">No matching locations in this parish.</div>'}
+$$('[data-service-mode]')'''
+          s,n=old_render.subn(new_render,s,count=1)
+          if n!=1: raise RuntimeError('renderLocations not found')
+          s=s.replace("$('#parishFilter').value='ALL';renderPins();renderLocations()","$('#parishFilter').value='';$('#locationSearch').value='';renderPins();renderLocations()")
+
+          # --- 3. Gia: exact JASDIS visual language, keeping WRHA source-grounded behaviour ---
+          gi=jas.index('/* Gia */')
+          gj=jas.index('@media(max-width',gi)
+          gia_css=jas[gi:gj]
+          # add JASDIS palette vars needed only by Gia + compatibility for existing WRHA answer classes
+          gia_css=':root{--purple:#6b2f96;--purple2:#7b3fa5;--purple3:#4b1f68;--gold:#f9d933;--gia-vvh:100dvh}\n'+gia_css+r'''
+          .gia-answer{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin-bottom:9px;box-shadow:0 10px 28px rgba(56,26,77,.055)}.gia-answer h3{margin:0 0 7px;color:#3f1757;font-size:18px}.gia-answer p{margin:0;color:#615969;font-size:14.5px;line-height:1.6}.gia-section{margin-top:12px;padding-top:12px;border-top:1px solid #e5ddeb}.gia-section h4{margin:0 0 7px;color:#54226e;font-size:14px}.gia-section li{font-size:13.5px;color:#5f5666;margin:5px 0}.regimen{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:8px}.regimen div{background:#f5f1f8;border:1px solid #e4d9eb;border-radius:11px;padding:9px}.regimen b{display:block;color:#54226e;font-size:11px}.regimen span{font-size:13px;color:#5f5666}.source-card{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px;background:#f5f1f8;border:1px solid #e4d9eb;border-radius:11px;padding:9px}.source-card b{display:block;font-size:12px;color:#54226e}.source-card span{display:block;font-size:11.5px;color:#756c7d}.gia-notice{margin-top:10px;background:#fff8d9;border:1px solid #eadb8e;border-radius:12px;padding:10px;color:#6b5817;font-size:13px}.gia-matches{display:grid;gap:8px;margin-top:10px}.gia-match{background:#fff;border:1px solid #e4d9eb;border-radius:12px;padding:11px}.gia-match b{font-size:12.5px;color:#54226e}.gia-match p{font-size:13.5px;color:#615969;margin:5px 0 0}.gia-footer{padding:9px 13px;background:#fff;border-top:1px solid var(--line);color:#89818f;font-size:12px;line-height:1.45}
+          '''
+          # replace current Gia CSS block
+          s,n=re.subn(r'/\* Gia \*/.*?(?=@keyframes float)',gia_css+'\n',s,count=1,flags=re.S)
+          if n!=1: raise RuntimeError('WRHA Gia CSS block not found')
+
+          # Extract the exact Gia avatar used in JASDIS
+          m=re.search(r'id="jasdisGiaFab".*?<img[^>]+src="([^"]+)"',jas,re.S)
+          if not m: raise RuntimeError('JASDIS Gia avatar not found')
+          avatar=m.group(1)
+
+          gia_html=f'''<!-- Gia -->
+          <button class="gia-fab" id="giaFab" type="button" aria-label="Open Gia, WRHA Resource Guide"><span class="gia-avatar"><img alt="Gia" src="{avatar}"></span><span class="gia-fab-text"><b>Gia</b><span>WRHA resource guide</span></span></button>
+          <div class="gia-backdrop" id="giaBackdrop" aria-hidden="true"></div>
+          <section class="gia-drawer" id="giaDrawer" role="dialog" aria-modal="true" aria-labelledby="giaTitle" aria-hidden="true">
+           <div class="gia-mobile-nav"><button type="button" id="giaBack">â Back to Resource Centre</button><button type="button" id="giaClose" aria-label="Close Gia">Ã</button></div>
+           <header class="gia-head"><span class="gia-avatar"><img alt="Gia" src="{avatar}"></span><div><div class="gia-kicker">WRHA RESOURCE GUIDE</div><h2 id="giaTitle">Gia</h2><p>Source-grounded guidance from the WRHA HIV/STI/TB resource library.</p></div></header>
+           <div class="gia-search-wrap"><div class="gia-search"><input id="giaSearch" type="search" placeholder="Ask about syphilis, PrEP, TB, PMTCTâ¦" aria-label="Ask Gia"><button id="giaSearchBtn" type="button">â</button></div><div class="gia-shortcuts"><button data-q="syphilis">STI guidance</button><button data-q="syphilis dose">Treatment & dosage</button><button data-q="PrEP">PrEP</button><button data-action="partner">Partner form</button><button data-action="services">Find services</button></div></div>
+           <div class="gia-results" id="giaResults" aria-live="polite"><div class="gia-welcome"><span class="gia-avatar"><img alt="Gia" src="{avatar}"></span><h3>What can I help you find?</h3><p>Ask for one topic. Iâll point you to the strongest matching WRHA/MOHW source and wonât invent an answer when the source library doesnât support it.</p></div></div>
+           <div class="gia-footer">Local, source-grounded quick reference Â· No clinical-query analytics</div>
+          </section>'''
+          s,n=re.subn(r'<!-- Gia -->.*?(?=<script>)',gia_html+'\n',s,count=1,flags=re.S)
+          if n!=1: raise RuntimeError('Gia HTML block not found')
+          s=s.replace("$('#giaFab').onclick=openGia;$('#giaClose').onclick=closeGia;$('#giaBackdrop').onclick=closeGia;","$('#giaFab').onclick=openGia;$('#giaClose').onclick=closeGia;$('#giaBack').onclick=closeGia;$('#giaBackdrop').onclick=closeGia;")
+          s=s.replace("document.querySelectorAll('.gia-chips button')","document.querySelectorAll('.gia-shortcuts button')")
+          s=s.replace('background:var(--blue);color:#fff;border-radius:9px','background:var(--purple);color:#fff;border-radius:9px')
+
+          # --- 4. Larger text throughout the Resource Centre ---
+          readability=r'''<style id="wrha-readability-pass">
+          body{font-size:17px}.brand-copy b{font-size:15px}.brand-copy span{font-size:11px}.desktop-nav a,.install-btn{font-size:12px}.hero p{font-size:17px}.leadership{font-size:14px}.btn{font-size:13px}.section-head p{font-size:15px}.quick-card b{font-size:15px}.quick-card span{font-size:13px}.target-card h3{font-size:16px}.target-card p{font-size:14px}.target-card small{font-size:12px}.manual-body h3{font-size:18px}.manual-body p{font-size:14px}.tag{font-size:10px}.qr-copy p{font-size:14px}.privacy{font-size:12px}.contact-card small{font-size:11px}.contact-card p{font-size:14px}.foot p{font-size:12px}.map-head b{font-size:14px}.map-mode button{font-size:13px!important}.parish-pin{font-size:10.5px}.parish-pin b{font-size:10px}.map-key{font-size:12px}.map-credit{font-size:11px}.side-card small{font-size:12px}.side-card p{font-size:14.5px}.side-card .service-tip{font-size:13px}.service-toolbar select,.service-toolbar input{font-size:16px}.directory-title>span{font-size:13px}.loc small{font-size:12.5px}.loc b{font-size:15px}.loc span{font-size:14px}.loc em{font-size:12px}.empty{font-size:14px}.gia-fab-text span{font-size:12.5px}.gia-fab-text b{font-size:15px}.gia-mobile-nav button{font-size:12px}.gia-kicker{font-size:12px}.gia-head p{font-size:13.5px}.gia-search input{font-size:16px}.gia-shortcuts button{font-size:13px}.gia-welcome p{font-size:14.5px}
+          @media(max-width:760px){body{font-size:16px}.brand-copy b{font-size:13px}.hero p{font-size:16px}.quick-card span{font-size:12px}.section-head p{font-size:14.5px}.gia-head p{font-size:13px}.gia-welcome p,.gia-answer p{font-size:14px}}
+          </style>'''
+          s=re.sub(r'<style id="wrha-readability-pass">.*?</style>','',s,flags=re.S)
+          s=s.replace('</head>',readability+'\n</head>',1)
+
+          # cache-bust
+          s=re.sub(r"register\('./sw\.js\?v=[^']+'\)","register('./sw.js?v=ui-refine-20260920b')",s)
+
+          # QA
+          checks={
+            'parish_first':'Select a parish on the map or from the menu to view locations.' in s,
+            'no_all_default':'<option value="ALL">All parishes</option>' not in s,
+            'gia_jasdis':'WRHA RESOURCE GUIDE' in s and 'gia-mobile-nav' in s and avatar in s,
+            'targets_short':'Four quick reminders for CI/DIO monitoring.' in s and 'Quick operational reminders for Contact Investigation monitoring.' not in s,
+            'font_uplift':'wrha-readability-pass' in s,
+            'manuals':all(x in s for x in ['./prep-handbook-2023.pdf','./sti-handbook-2026.pdf','./tuberculosis-manual.pdf','./pmtct-manual.pdf'])
+          }
+          if not all(checks.values()): raise RuntimeError(f'QA failed: {checks}')
+          p.write_text(s,encoding='utf-8')
+          print('QA PASSED',checks)
+          PY
+
+      - name: Commit refined WRHA interface
+        run: |
+          git config user.name "ChatGPT WRHA refinement"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Refine targets, Gia, service selection and readability"
+            git push
+          fi
