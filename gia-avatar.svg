@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Gia assistant avatar">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7f6fb"/><stop offset="1" stop-color="#cdebf5"/></linearGradient><linearGradient id="coat" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#e9f0f4"/></linearGradient></defs>
+<circle cx="120" cy="120" r="116" fill="url(#bg)" stroke="#0d66a8" stroke-width="4"/>
+<!-- bun + hair --> <circle cx="120" cy="46" r="30" fill="#17191c"/><path d="M71 98c0-43 24-68 51-68 35 0 55 26 53 72-6-9-15-14-27-17-12 12-31 18-54 19-8 0-16-2-23-6z" fill="#1b1c20"/>
+<!-- face --> <path d="M82 86c2-33 21-49 40-49 28 0 48 22 48 56 0 37-20 64-49 64-26 0-43-28-39-71z" fill="#6b3d2d"/>
+<ellipse cx="103" cy="101" rx="5" ry="7" fill="#231a17"/><ellipse cx="142" cy="101" rx="5" ry="7" fill="#231a17"/><circle cx="105" cy="99" r="1.6" fill="#fff"/><circle cx="144" cy="99" r="1.6" fill="#fff"/>
+<path d="M113 126c8 6 16 6 24 0" fill="none" stroke="#4b241e" stroke-width="3.5" stroke-linecap="round"/><path d="M122 105c-2 7-4 13-2 17 2 2 5 2 8 0" fill="none" stroke="#4f2b22" stroke-width="2.5" stroke-linecap="round"/>
+<!-- neck/top --> <path d="M104 151h35l6 28H97z" fill="#6b3d2d"/><path d="M95 170h53l12 65H79z" fill="#f6c21c"/><path d="M105 172l17 25 17-25" fill="#0b8c9c"/>
+<!-- coat --> <path d="M42 226c4-35 23-55 58-62l22 34 22-34c35 7 55 28 58 62z" fill="url(#coat)" stroke="#d9e3e9" stroke-width="2"/><path d="M100 164l22 34-20 28H73l12-47zM144 164l-22 34 20 28h29l-12-47z" fill="#fff"/>
+<!-- stethoscope --> <path d="M90 173c-8 14-5 31 8 39 11 7 28 4 34-8" fill="none" stroke="#234b63" stroke-width="5" stroke-linecap="round"/><circle cx="139" cy="202" r="8" fill="#2d647d" stroke="#17384a" stroke-width="3"/>
+</svg>

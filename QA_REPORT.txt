@@ -1,0 +1,83 @@
+WRHA HIV/STI/TB RESOURCE CENTER — QA REPORT
+Generated: 20 September 2026
+
+Static/structural validation: 72/72 checks passed.
+Inline JavaScript and service worker syntax were separately validated with Node.js --check.
+Both QR codes were machine-decoded locally and matched the exact requested URLs.
+All four bundled PDFs were opened programmatically and their page counts verified (18, 35, 166, 119).
+
+[PASS] WRHA logo is exact uploaded file
+[PASS] Site title correct — WRHA HIV/STI/TB Resource Center
+[PASS] Regional Contact Investigator title retained
+[PASS] Navigation: Home
+[PASS] Navigation: Manuals
+[PASS] Navigation: Anonymous Partner Info
+[PASS] Navigation: PrEP / HSTU
+[PASS] Navigation: Find Services
+[PASS] Install button present
+[PASS] Preloader uses WRHA logo
+[PASS] Anonymous partner URL exact
+[PASS] HSTU URL exact
+[PASS] JASDIS footer URL exact
+[PASS] Only one visible JASDIS mention — 1
+[PASS] Partner form privacy note present
+[PASS] Stefan contact visible
+[PASS] Stefan tel link exact
+[PASS] Exactly four configured manuals
+[PASS] Manual title: PrEP Handbook 2023
+[PASS] Manual title: STI Handbook 2026
+[PASS] Manual title: Tuberculosis Manual
+[PASS] Manual title: PMTCT / Prevention of Vertical Transmission Manual
+[PASS] PDF exists: prep-handbook-2023.pdf
+[PASS] PDF page count: prep-handbook-2023.pdf — 18
+[PASS] PDF exists: sti-handbook-2026.pdf
+[PASS] PDF page count: sti-handbook-2026.pdf — 35
+[PASS] PDF exists: tuberculosis-manual.pdf
+[PASS] PDF page count: tuberculosis-manual.pdf — 166
+[PASS] PDF exists: pmtct-manual.pdf
+[PASS] PDF page count: pmtct-manual.pdf — 119
+[PASS] PDF viewer page jump logic
+[PASS] PDF control wired: prevPage
+[PASS] PDF control wired: nextPage
+[PASS] PDF control wired: zoomIn
+[PASS] PDF control wired: zoomOut
+[PASS] PDF control wired: downloadManual
+[PASS] PDF control wired: openDirect
+[PASS] Knowledge index has 338 pages — 338
+[PASS] Syphilis structured knowledge present
+[PASS] BPG 2.4 million units present
+[PASS] Pregnancy syphilis guidance present
+[PASS] Congenital syphilis regimen present
+[PASS] PrEP event-driven regimen present
+[PASS] Gia follow-up context present
+[PASS] Gia contact routing restricted to Stefan
+[PASS] Gia source links open exact pages
+[PASS] Partner QR exact — https://docs.google.com/forms/d/e/1FAIpQLScW3yTwzoeT2YHRc1rWyJUBTuCFZoRusWl2WFGwyRwNYutsUQ/viewform
+[PASS] HSTU QR exact — https://hstu.moh.gov.jm/
+[PASS] Service data covers 4 WRHA parishes
+[PASS] Service entries all have source URLs
+[PASS] Directions generated from service name/address
+[PASS] Manifest standalone
+[PASS] Manifest icons 192/512
+[PASS] Offline precache: prep-handbook-2023.pdf
+[PASS] Offline precache: sti-handbook-2026.pdf
+[PASS] Offline precache: tuberculosis-manual.pdf
+[PASS] Offline precache: pmtct-manual.pdf
+[PASS] Offline non-navigation failure handled
+[PASS] Removed: salary calculator
+[PASS] Removed: learning media
+[PASS] Removed: about jasdis
+[PASS] Removed: jasdis leadership
+[PASS] Removed: jasdis membership
+[PASS] Removed: national dio directory
+[PASS] No Games section visible
+[PASS] Viewport meta
+[PASS] Reduced-motion support
+[PASS] Focus-visible support
+[PASS] ARIA live results
+[PASS] Phone breakpoint present
+[PASS] Horizontal overflow prevented
+[PASS] Static local assets resolve
+
+ENVIRONMENT LIMITATION
+A Chromium/Playwright end-to-end navigation test was attempted, but this sandbox blocks local/file browser navigation with ERR_BLOCKED_BY_ADMINISTRATOR. Therefore final visual rendering, install-prompt behaviour and browser-native PDF controls should receive a short smoke test after deployment to GitHub Pages. This limitation is environmental; no failed browser assertion was hidden or treated as a pass.

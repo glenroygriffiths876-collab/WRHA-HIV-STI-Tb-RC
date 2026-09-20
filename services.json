@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Lucea Health Centre",
+    "parish": "Hanover",
+    "services": [
+      "PrEP",
+      "HIV/STI"
+    ],
+    "address": "Fort Charlotte Drive, Lucea, Hanover, Jamaica",
+    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
+  },
+  {
+    "name": "Noel Holmes Hospital",
+    "parish": "Hanover",
+    "services": [
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Fort Charlotte Drive, Lucea, Hanover, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Green Island Health Centre",
+    "parish": "Hanover",
+    "services": [
+      "STI/Primary care"
+    ],
+    "address": "Green Island, Hanover, Jamaica",
+    "source": "https://www.wrha.gov.jm/health-facilities/hanover/"
+  },
+  {
+    "name": "Montego Bay Comprehensive (Type V) Health Centre",
+    "parish": "St James",
+    "services": [
+      "PrEP",
+      "HIV/STI"
+    ],
+    "address": "Creek Street, Montego Bay, St. James, Jamaica",
+    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
+  },
+  {
+    "name": "Barnett Clinic",
+    "parish": "St James",
+    "services": [
+      "HIV treatment"
+    ],
+    "address": "Barnett Street, Montego Bay, St. James, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Jamaica AIDS Support for Life (JASL) - Montego Bay",
+    "parish": "St James",
+    "services": [
+      "HIV treatment"
+    ],
+    "address": "Van Haze Building, 16 East Street, Montego Bay, St. James, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Cornwall Regional Hospital",
+    "parish": "St James",
+    "services": [
+      "Hospital"
+    ],
+    "address": "Mount Salem, Montego Bay, St. James, Jamaica",
+    "source": "https://www.wrha.gov.jm/health-facilities/st-james/"
+  },
+  {
+    "name": "Duncans Health Centre",
+    "parish": "Trelawny",
+    "services": [
+      "PrEP",
+      "HIV treatment"
+    ],
+    "address": "Main Road, Duncans, Trelawny, Jamaica",
+    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
+  },
+  {
+    "name": "Falmouth Public General Hospital",
+    "parish": "Trelawny",
+    "services": [
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Rodney Street, Falmouth, Trelawny, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Savanna-la-Mar Public General Hospital",
+    "parish": "Westmoreland",
+    "services": [
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Barracks Road, Savanna-la-Mar, Westmoreland, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Negril Health Centre",
+    "parish": "Westmoreland",
+    "services": [
+      "Primary care"
+    ],
+    "address": "Negril, Westmoreland, Jamaica",
+    "source": "https://www.wrha.gov.jm/health-facilities/westmoreland/"
+  }
+]
