@@ -1,4 +1,4 @@
-const CACHE="wrha-hiv-sti-tb-hub-v4";
+const CACHE="wrha-hiv-sti-tb-hub-v6";
 const SHELL=[
   "./",
   "./index.html",

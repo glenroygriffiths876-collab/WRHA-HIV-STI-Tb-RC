@@ -34,3 +34,14 @@ Upload the CONTENTS of this folder to the root of a GitHub Pages repository. Kee
 ## External links in the interface
 - Official WRHA website: https://www.wrha.gov.jm/
 - JASDIS Resource Centre: https://jasdis876.github.io/JASDIS-Resource-Center/#home
+
+
+## v5 deployment resilience update
+- WRHA logo, QR codes, Gia avatar and all four manual cover images are embedded directly in `index.html` so the live interface does not show broken images if asset paths are mis-deployed.
+- Manual knowledge and service data remain embedded in the page with the JSON files retained for normal deployments.
+- Find Services now includes a WRHA-branded Western Region parish selector and All services / HIV-STI / PrEP filters, while retaining verified source and directions links.
+- Local asset folders and PWA files are still included for offline installation and maintainability.
+
+
+## Credits
+Made by Glenroy Griffiths, JP, BSc, MPH. Website enquiries and issue reporting are linked in the site footer to WhatsApp at 876-502-9756.

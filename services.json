@@ -1,10 +1,496 @@
 [
   {
+    "name": "Morant Bay Health Centre",
+    "parish": "St Thomas",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "54 Lyssons Road, Morant Bay, St. Thomas, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Princess Margaret Hospital",
+    "parish": "St Thomas",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "54 Lyssons Road, Morant Bay, St. Thomas, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "St. Jago Park Health Centre",
+    "parish": "St Catherine",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Burke Road, Spanish Town, St. Catherine, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Greater Portmore Health Centre",
+    "parish": "St Catherine",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "5 West Greater Portmore, St. Catherine, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Spanish Town Hospital",
+    "parish": "St Catherine",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Burke Road, Spanish Town, St. Catherine, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Linstead Health Centre",
+    "parish": "St Catherine",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Rodney Hall Road, Linstead, St. Catherine, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Old Harbour Health Centre",
+    "parish": "St Catherine",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Lot 5 Marlie Avenue, Old Harbour, St. Catherine, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Rhema Medical Centre",
+    "parish": "St Catherine",
+    "services": [
+      "PrEP"
+    ],
+    "address": "Shop #2, Dermason Plaza, Portmore, St. Catherine, Jamaica",
+    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
+  },
+  {
+    "name": "Kingston Public Hospital (KPH)",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "North Street, Kingston, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Maxfield Park Health Centre",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "87 Maxfield Avenue, Kingston 10, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Duhaney Park Health Centre",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "122A Baldwin Crescent, Kingston 20, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Windward Road Health Centre",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "18 Paradise Street, Kingston 16, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "National Chest Hospital (NCH)",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "36 1/2 Barbican Road, Kingston 6, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Comprehensive Health Centre",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "55 Slipe Pen Road, Kingston 5, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Bustamante Hospital for Children",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Arthur Wint Drive, Kingston 5, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Victoria Jubilee Hospital (VJH)",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "2 North Street, Kingston, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "CHARES - University Hospital of the West Indies",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "University Hospital of the West Indies, Mona, Kingston, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "AIDS Healthcare Foundation (AHF)",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "183 Hagley Park Road, Kingston, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Jamaica AIDS Support for Life (JASL) - Kingston",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "3 Hendon Drive, Kingston 20, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Teen Hub",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "Shop 6, Half-Way-Tree Transport Centre, Kingston 10, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Dr. Shane Dockery",
+    "parish": "Kingston & St Andrew",
+    "services": [
+      "PrEP"
+    ],
+    "address": "23 National Heroes Circle, Kingston, Jamaica",
+    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
+  },
+  {
+    "name": "St. Ann’s Bay Hospital",
+    "parish": "St Ann",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Seville Road, St. Ann’s Bay, St. Ann, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "St. Ann’s Bay Health Centre",
+    "parish": "St Ann",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "St. Ann’s Bay, St. Ann, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Alexandria Community Hospital",
+    "parish": "St Ann",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Alexandria, St. Ann, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Claremont Centre of Excellence",
+    "parish": "St Ann",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "Claremont, St. Ann, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Jamaica AIDS Support for Life (JASL) - St. Ann’s Bay",
+    "parish": "St Ann",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "4 King Street, St. Ann’s Bay, St. Ann, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Dr. Yolanda Hosang - Providence Medical",
+    "parish": "St Ann",
+    "services": [
+      "PrEP"
+    ],
+    "address": "Providence Medical, Salem, Runaway Bay, St. Ann, Jamaica",
+    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
+  },
+  {
+    "name": "Port Maria Health Centre",
+    "parish": "St Mary",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Main Street, Port Maria, St. Mary, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Highgate Health Centre",
+    "parish": "St Mary",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "Highgate, St. Mary, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Annotto Bay Hospital",
+    "parish": "St Mary",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Annotto Bay, St. Mary, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Port Antonio Health Centre",
+    "parish": "Portland",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Smatt Road, Port Antonio, Portland, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Buff Bay Health Centre",
+    "parish": "Portland",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "Buff Bay, Portland, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "May Pen Health Centre",
+    "parish": "Clarendon",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Main Street, May Pen, Clarendon, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "May Pen Hospital",
+    "parish": "Clarendon",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Manchester Avenue, May Pen, Clarendon, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Chapelton Community Hospital",
+    "parish": "Clarendon",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "1 Benton Avenue, Chapelton, Clarendon, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "City Medical - Dr. Anil Kumar Kandikatla",
+    "parish": "Clarendon",
+    "services": [
+      "PrEP"
+    ],
+    "address": "City Medical, May Pen, Clarendon, Jamaica",
+    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
+  },
+  {
+    "name": "Mandeville Regional Hospital",
+    "parish": "Manchester",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "32 Hargreaves Avenue, Mandeville, Manchester, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Mandeville Comprehensive Clinic",
+    "parish": "Manchester",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "South Race Course Road, Mandeville, Manchester, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Black River Health Centre",
+    "parish": "St Elizabeth",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "High Street, Black River, St. Elizabeth, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Black River Hospital",
+    "parish": "St Elizabeth",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "45 High Street, Black River, St. Elizabeth, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Barnett Clinic",
+    "parish": "St James",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "Barnett Street, Montego Bay, St. James, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Montego Bay Type V Health Centre",
+    "parish": "St James",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Payne Street, Montego Bay, St. James, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Jamaica AIDS Support for Life (JASL) - Montego Bay",
+    "parish": "St James",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Van Haze Building, 16 East Street, Montego Bay, St. James, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Duncans Health Centre",
+    "parish": "Trelawny",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "PrEP"
+    ],
+    "address": "Main Road, Duncans, Trelawny, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Falmouth Public General Hospital",
+    "parish": "Trelawny",
+    "services": [
+      "HIV/STI",
+      "HIV treatment",
+      "Hospital"
+    ],
+    "address": "Rodney Street, Falmouth, Trelawny, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
+    "name": "Lucea Reproductive Health Clinic",
+    "parish": "Hanover",
+    "services": [
+      "HIV/STI",
+      "HIV treatment"
+    ],
+    "address": "Lucea, Hanover, Jamaica",
+    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
+  },
+  {
     "name": "Lucea Health Centre",
     "parish": "Hanover",
     "services": [
-      "PrEP",
-      "HIV/STI"
+      "PrEP"
     ],
     "address": "Fort Charlotte Drive, Lucea, Hanover, Jamaica",
     "source": "https://hstu.moh.gov.jm/prep-locations-2/"
@@ -13,6 +499,7 @@
     "name": "Noel Holmes Hospital",
     "parish": "Hanover",
     "services": [
+      "HIV/STI",
       "HIV treatment",
       "Hospital"
     ],
@@ -20,75 +507,10 @@
     "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
   },
   {
-    "name": "Green Island Health Centre",
-    "parish": "Hanover",
-    "services": [
-      "STI/Primary care"
-    ],
-    "address": "Green Island, Hanover, Jamaica",
-    "source": "https://www.wrha.gov.jm/health-facilities/hanover/"
-  },
-  {
-    "name": "Montego Bay Comprehensive (Type V) Health Centre",
-    "parish": "St James",
-    "services": [
-      "PrEP",
-      "HIV/STI"
-    ],
-    "address": "Creek Street, Montego Bay, St. James, Jamaica",
-    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
-  },
-  {
-    "name": "Barnett Clinic",
-    "parish": "St James",
-    "services": [
-      "HIV treatment"
-    ],
-    "address": "Barnett Street, Montego Bay, St. James, Jamaica",
-    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
-  },
-  {
-    "name": "Jamaica AIDS Support for Life (JASL) - Montego Bay",
-    "parish": "St James",
-    "services": [
-      "HIV treatment"
-    ],
-    "address": "Van Haze Building, 16 East Street, Montego Bay, St. James, Jamaica",
-    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
-  },
-  {
-    "name": "Cornwall Regional Hospital",
-    "parish": "St James",
-    "services": [
-      "Hospital"
-    ],
-    "address": "Mount Salem, Montego Bay, St. James, Jamaica",
-    "source": "https://www.wrha.gov.jm/health-facilities/st-james/"
-  },
-  {
-    "name": "Duncans Health Centre",
-    "parish": "Trelawny",
-    "services": [
-      "PrEP",
-      "HIV treatment"
-    ],
-    "address": "Main Road, Duncans, Trelawny, Jamaica",
-    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
-  },
-  {
-    "name": "Falmouth Public General Hospital",
-    "parish": "Trelawny",
-    "services": [
-      "HIV treatment",
-      "Hospital"
-    ],
-    "address": "Rodney Street, Falmouth, Trelawny, Jamaica",
-    "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
-  },
-  {
     "name": "Savanna-la-Mar Public General Hospital",
     "parish": "Westmoreland",
     "services": [
+      "HIV/STI",
       "HIV treatment",
       "Hospital"
     ],
@@ -96,12 +518,12 @@
     "source": "https://hstu.moh.gov.jm/treatment-sites-and-locations/"
   },
   {
-    "name": "Negril Health Centre",
+    "name": "Dr. Kevin Lawrence",
     "parish": "Westmoreland",
     "services": [
-      "Primary care"
+      "PrEP"
     ],
-    "address": "Negril, Westmoreland, Jamaica",
-    "source": "https://www.wrha.gov.jm/health-facilities/westmoreland/"
+    "address": "Shops 2 & 3, Lawrence Plaza, Whitehouse P.O., Westmoreland, Jamaica",
+    "source": "https://hstu.moh.gov.jm/prep-locations-2/"
   }
 ]
