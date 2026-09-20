@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b4f91">
+<meta name="description" content="WRHA HIV/STI/TB Resource Center — quick HIV/STI/TB resources for the Western Region.">
+<title>WRHA HIV/STI/TB Resource Center</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{--blue:#0b4f91;--blue2:#116eb1;--cyan:#159bd2;--teal:#0aa3a8;--ink:#153047;--muted:#63798b;--bg:#f5f9fc;--surface:#fff;--line:#dce8f0;--soft:#eaf5fb;--shadow:0 18px 50px rgba(11,79,145,.12);--max:1160px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;overflow-x:hidden}body.lock{overflow:hidden}a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}img{max-width:100%;display:block}
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(11,79,145,.1)}.head{max-width:var(--max);margin:auto;min-height:76px;padding:9px 18px;display:flex;align-items:center;gap:14px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none}.brand img{width:118px;height:56px;object-fit:contain}.brand-copy{border-left:1px solid var(--line);padding-left:11px}.brand-copy b{display:block;color:var(--blue);font-size:13px}.brand-copy span{font-size:8px;color:var(--muted)}.desktop-nav{margin-left:auto;display:flex;gap:4px}.desktop-nav a{text-decoration:none;padding:9px 10px;border-radius:10px;font-size:9px;font-weight:850;color:#49677e}.desktop-nav a:hover{background:var(--soft);color:var(--blue)}.install-btn{border:0;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-radius:12px;padding:10px 12px;font-size:9px;font-weight:850}
+.hero{min-height:540px;display:grid;align-items:center;background:radial-gradient(circle at 8% 0%,rgba(21,155,210,.17),transparent 30%),radial-gradient(circle at 88% 15%,rgba(10,163,168,.13),transparent 28%),linear-gradient(145deg,#fff,#f5fbff 54%,#eaf6fb)}.hero-inner{max-width:var(--max);margin:auto;padding:58px 18px 68px;display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center}.hero-logo{background:#fff;border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow)}.hero-logo img{max-width:460px;margin:auto}.kicker{color:var(--blue2);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.hero h1{margin:13px 0;font-size:clamp(40px,5vw,68px);line-height:.96;letter-spacing:-.055em;color:#113a5d}.hero h1 span{background:linear-gradient(100deg,var(--blue),var(--cyan),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:15px}.leadership{margin-top:16px;padding:13px 15px;border-left:3px solid var(--cyan);background:rgba(255,255,255,.7);border-radius:0 14px 14px 0;font-size:11px;color:#4c6679}.hero-actions,.qr-actions,.more{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.btn{border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:13px;padding:11px 14px;text-decoration:none;font-size:10px;font-weight:850;display:inline-flex;align-items:center;gap:7px}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.cyan{background:var(--cyan);color:#fff;border-color:var(--cyan)}.btn.small{padding:8px 10px;font-size:8.5px;border-radius:10px}
+.section{max-width:var(--max);margin:auto;padding:66px 18px}.section.slim{padding-top:40px;padding-bottom:40px}.section-head{max-width:800px;margin-bottom:26px}.eyebrow{color:var(--cyan);font-size:9px;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.section-head h2{margin:7px 0 8px;font-size:clamp(29px,4vw,46px);line-height:1;letter-spacing:-.045em;color:#123d5f}.section-head p{margin:0;color:var(--muted);font-size:12px}.alt{background:#edf7fb;border-block:1px solid var(--line)}
+.quick-grid,.target-grid,.manual-grid,.service-grid{display:grid;gap:14px}.quick-grid{grid-template-columns:repeat(4,1fr);margin-top:-34px}.quick-card,.target-card,.manual-card,.service-card,.qr-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 34px rgba(11,79,145,.07)}.quick-card{padding:18px;text-decoration:none}.quick-card b{display:block;color:#174666;font-size:12px;margin-top:10px}.quick-card span{display:block;color:var(--muted);font-size:9px;margin-top:4px}.quick-icon{font-size:22px}.target-grid{grid-template-columns:repeat(4,1fr)}.target-card{padding:18px}.target-card .metric{font-size:28px;font-weight:950;color:var(--blue)}.target-card h3{font-size:13px;margin:4px 0}.target-card p{font-size:9px;color:var(--muted);margin:0}.target-card small{display:block;margin-top:8px;color:#587287;font-size:7.5px}
+.manual-grid{grid-template-columns:repeat(4,1fr)}.manual-card{overflow:hidden;transition:.2s}.manual-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.cover{height:205px;background:linear-gradient(145deg,#edf7fb,#fff);display:grid;place-items:center;padding:14px;border-bottom:1px solid var(--line)}.cover img{max-height:180px;object-fit:contain}.manual-body{padding:16px}.tag{display:inline-flex;padding:4px 7px;border-radius:99px;background:#e8f5fb;color:var(--blue2);font-size:7px;font-weight:950}.manual-body h3{font-size:14px;line-height:1.2}.manual-body p{font-size:9px;color:var(--muted)}
+.qr-card{padding:22px;display:grid;grid-template-columns:180px 1fr;gap:22px;align-items:center}.qr-box{background:#fff;border:1px solid #cfdee8;border-radius:18px;padding:10px}.qr-copy h3{margin:0 0 6px;color:#174666;font-size:20px}.qr-copy p{font-size:10px;color:var(--muted)}.privacy{font-size:8px;color:#6d7f8c}
+.service-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.searchbox{flex:1;min-width:210px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px 12px}.filter{border:1px solid var(--line);background:#fff;border-radius:13px;padding:10px 12px}.service-grid{grid-template-columns:repeat(3,1fr)}.service-card{padding:15px}.service-card .parish{font-size:7.5px;font-weight:950;letter-spacing:.11em;color:var(--cyan);text-transform:uppercase}.service-card h3{font-size:13px;line-height:1.2;margin:5px 0}.service-card p{font-size:8.5px;color:var(--muted)}.pills{display:flex;gap:5px;flex-wrap:wrap}.pill{font-size:7px;background:#eef7fb;color:#285a78;padding:4px 6px;border-radius:99px}
+.contact-card{background:linear-gradient(135deg,#0b4f91,#0f79b7 65%,#0a9ca4);color:#fff;border-radius:28px;padding:28px;display:grid;grid-template-columns:1fr auto;align-items:center}.contact-card small{font-size:8px;letter-spacing:.13em;color:#b8e7fb}.contact-card h3{font-size:24px;margin:5px 0}.contact-card p{font-size:10px;color:#d8eef7}.contact-card .btn{background:#fff;color:var(--blue)}
+footer{padding:38px 18px 110px;background:#fff;border-top:1px solid var(--line)}.foot{max-width:var(--max);margin:auto;text-align:center}.foot img{width:160px;margin:0 auto 11px}.foot p{font-size:9px;color:var(--muted);max-width:720px;margin:4px auto}
+.mobile-nav{display:none;position:fixed;left:8px;right:8px;bottom:8px;z-index:180;background:rgba(255,255,255,.96);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:18px;grid-template-columns:repeat(5,1fr);padding:5px;box-shadow:0 16px 45px rgba(8,48,77,.18)}.mobile-nav a{text-decoration:none;text-align:center;padding:7px 2px;border-radius:12px;color:#527087;font-size:7px;font-weight:850}.mobile-nav a i{display:block;font-style:normal;font-size:16px}
+.gia-fab{position:fixed;right:18px;bottom:18px;z-index:240;display:flex;align-items:center;gap:9px;border:0;border-radius:999px;padding:6px 13px 6px 6px;background:linear-gradient(135deg,#0b4f91,#159bd2);color:#fff;box-shadow:0 18px 48px rgba(11,79,145,.32)}.gia-fab img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#e8f7fb;border:2px solid #fff}.gia-fab b{display:block}.gia-fab span{display:block;font-size:7px;color:#d6effb}.gia-backdrop{position:fixed;inset:0;z-index:300;background:rgba(7,28,43,.52);opacity:0;visibility:hidden}.gia-backdrop.open{opacity:1;visibility:visible}.gia-drawer{position:fixed;z-index:310;right:0;top:0;bottom:0;width:min(560px,100vw);background:#f6fafe;border-left:1px solid var(--line);transform:translateX(102%);transition:.28s;display:flex;flex-direction:column}.gia-drawer.open{transform:none}.gia-head{padding:15px;background:linear-gradient(135deg,#083e75,#0e6ca7 58%,#0999a0);color:#fff;display:grid;grid-template-columns:58px 1fr 38px;gap:11px;align-items:center}.gia-head img{width:58px;height:58px;border-radius:50%;background:#e8f7fb}.gia-head h2{margin:0}.gia-close{width:36px;height:36px;border:0;border-radius:11px;background:rgba(0,0,0,.12);color:#fff;font-size:20px}.gia-search-zone{padding:11px;background:#fff;border-bottom:1px solid var(--line)}.gia-search{display:grid;grid-template-columns:1fr 42px;gap:6px;border:1px solid var(--line);border-radius:14px;padding:5px}.gia-search input{border:0;outline:0;padding:9px}.gia-search button{border:0;background:var(--blue);color:#fff;border-radius:10px}.gia-chips{display:flex;gap:6px;overflow:auto;padding-top:8px}.gia-chips button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 8px;font-size:7px;font-weight:850}.gia-results{flex:1;overflow:auto;padding:13px}.gia-answer,.gia-welcome{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px}.gia-answer h3,.gia-welcome h3{margin:0 0 6px;color:#164767}.gia-answer p,.gia-welcome p,.gia-answer li{font-size:9px;color:var(--muted)}.gia-footer{padding:8px 12px;background:#fff;border-top:1px solid var(--line);font-size:7px;color:#718492;text-align:center}
+@media(max-width:1000px){.hero-inner{grid-template-columns:1fr;text-align:center}.quick-grid,.target-grid{grid-template-columns:repeat(2,1fr)}.manual-grid,.service-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.desktop-nav{display:none}.brand img{width:92px}.brand-copy span{display:none}.hero h1{font-size:44px}.hero-inner{padding:42px 12px 58px}.section{padding:52px 12px}.mobile-nav{display:grid}.gia-fab{right:12px;bottom:80px;padding:5px}.gia-fab div{display:none}.gia-fab img{width:52px;height:52px}.qr-card{grid-template-columns:1fr;text-align:center}.qr-box{max-width:250px;margin:auto}}
+@media(max-width:520px){.quick-grid,.target-grid,.manual-grid,.service-grid{grid-template-columns:1fr}.hero h1{font-size:38px}}
+</style>
+</head>
+<body>
+<header><div class="head">
+<a class="brand" href="#home"><img src="wrha-logo.png" alt="Western Regional Health Authority"><div class="brand-copy"><b>HIV/STI/TB Resource Center</b><span>Quick HIV/STI/TB resources for the Western Region</span></div></a>
+<nav class="desktop-nav"><a href="#home">Home</a><a href="#targets">Programme Targets</a><a href="#manuals">Manuals</a><a href="#partner">Partner Info</a><a href="#services">Find Services</a></nav>
+<button class="install-btn" id="installBtn">Install WRHA Resource Center</button>
+</div></header>
+
+<main>
+<section class="hero" id="home"><div class="hero-inner"><div>
+<div class="kicker">Western Regional Health Authority</div>
+<h1>WRHA HIV/STI/TB <span>Resource Center</span></h1>
+<p>Quick access to essential HIV, STI, TB and PMTCT resources for the Western Region.</p>
+<div class="leadership">A regional initiative led by <b>Mr. Stefan Miller, Regional Contact Investigator</b>, with support from Parish Contact Investigators / Disease Intervention Officers across WRHA.</div>
+<div class="hero-actions"><a class="btn primary" href="#manuals">📚 Open Manuals</a><a class="btn" href="#partner">🔒 Anonymous Partner Information</a><a class="btn" href="#prep-hstu">💊 PrEP / Jason</a><a class="btn" href="#services">📍 Find Services</a></div>
+</div><div class="hero-logo"><img src="wrha-logo.png" alt="Western Regional Health Authority"></div></div></section>
+
+<div class="section slim"><div class="quick-grid">
+<a class="quick-card" href="#targets"><div class="quick-icon">🎯</div><b>Programme Targets</b><span>Key reminders for CI/DIO monitoring.</span></a>
+<a class="quick-card" href="#manuals"><div class="quick-icon">📚</div><b>Open Manuals</b><span>Four core programme manuals.</span></a>
+<a class="quick-card" href="#partner"><div class="quick-icon">🔒</div><b>Anonymous Partner Info</b><span>Fast QR access to the supplied form.</span></a>
+<a class="quick-card" href="#services"><div class="quick-icon">📍</div><b>Find Services</b><span>Search facilities and directions.</span></a>
+</div></div>
+
+<section class="alt"><div class="section" id="targets">
+<div class="section-head"><div class="eyebrow">Programme monitoring</div><h2>Priority programme targets</h2><p>Operational reminders for Contact Investigation monitoring. These distinguish programme trajectory from longer-term aspiration so the dashboard does not misstate targets.</p></div>
+<div class="target-grid">
+<article class="target-card"><div class="metric">≥90%</div><h3>STI / FP HIV testing by Month 6</h3><p>Review every eligible STI/FP attendee who did not receive HIV testing and document the reason/action.</p><small>Progress thereafter toward 100%.</small></article>
+<article class="target-card"><div class="metric">≥80%</div><h3>Hospital PITC by Month 6</h3><p>Track eligible hospital admissions, map missed opportunities by ward/service/shift, and provide clinician feedback.</p><small>Use eligible admissions as the denominator.</small></article>
+<article class="target-card"><div class="metric">100%</div><h3>STI syndromic management review</h3><p>Use the national STI guidance for common syndromes, including vaginal discharge causes such as candidiasis/yeast and bacterial vaginosis where clinically applicable.</p><small>Use the clinical manual for diagnosis/treatment details.</small></article>
+<article class="target-card"><div class="metric">STI</div><h3>Facility + Clinic documentation</h3><p>When the prescribed reporting form asks for Facility and Clinic, identify the facility and record the clinic/service as <b>STI</b> where that is the actual service.</p><small>Parish CI/DIO oversight should check completeness and missed-test follow-up.</small></article>
+</div></div></section>
+
+<section class="section" id="manuals"><div class="section-head"><div class="eyebrow">Core manuals</div><h2>Four source-grounded manuals</h2><p>Open the programme source directly or ask Gia for a concise quick-reference answer.</p></div><div class="manual-grid" id="manualGrid"></div></section>
+
+<section class="alt"><div class="section" id="partner"><div class="section-head"><div class="eyebrow">Patient quick access</div><h2>Anonymous Partner Information</h2><p>For patients with HIV or infectious syphilis who need to share partner information.</p></div><div class="qr-card"><div class="qr-box"><img src="qr-partner.png" alt="Anonymous partner information QR"></div><div class="qr-copy"><h3>Share Partner Information Anonymously</h3><p>Scan with your phone to open the anonymous partner information form.</p><span class="privacy">This Resource Center does not store information entered into the form.</span><div class="qr-actions"><a class="btn primary" target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/1FAIpQLScW3yTwzoeT2YHRc1rWyJUBTuCFZoRusWl2WFGwyRwNYutsUQ/viewform">Open Anonymous Form</a></div></div></div></div></section>
+
+<section class="section" id="prep-hstu"><div class="section-head"><div class="eyebrow">PrEP & HSTU</div><h2>Open HSTU and Jason PrEP</h2></div><div class="qr-card"><div class="qr-box"><img src="qr-hstu.png" alt="HSTU QR"></div><div class="qr-copy"><h3>HSTU / Jason PrEP</h3><p>Open the National HIV/STI/TB Programme website and Jason PrEP resources.</p><div class="qr-actions"><a class="btn cyan" target="_blank" rel="noopener" href="https://hstu.moh.gov.jm/">Open HSTU / Jason PrEP</a></div></div></div></section>
+
+<section class="alt"><div class="section" id="services"><div class="section-head"><div class="eyebrow">Find services</div><h2>Facility and service finder</h2><p>Search the live service dataset by facility, parish or service. Directions open in your maps app.</p></div>
+<div class="service-tools"><input class="searchbox" id="serviceSearch" type="search" placeholder="Search facility, parish or service…"><select class="filter" id="parishFilter"><option value="">All parishes</option></select><select class="filter" id="serviceFilter"><option value="">All services</option><option value="hiv">HIV / STI</option><option value="prep">PrEP</option></select></div><div class="service-grid" id="serviceGrid"></div></div></section>
+
+<section class="section"><div class="contact-card"><div><small>Regional Contact</small><h3>Mr. Stefan Miller</h3><p>Regional Contact Investigator · Western Regional Health Authority<br>(876) 784-8208</p></div><a class="btn" href="tel:+18767848208">Call Stefan Miller</a></div></section>
+</main>
+
+<footer><div class="foot"><img src="wrha-logo.png" alt="WRHA"><p><b>Western Regional Health Authority · HIV/STI/TB Resource Center</b></p><p>Regional initiative led by Mr. Stefan Miller, Regional Contact Investigator, with support from Parish Contact Investigators / Disease Intervention Officers.</p><p><b>Made by Glenroy Griffiths, JP, BSc, MPH</b></p><div class="more"><a class="btn small primary" target="_blank" rel="noopener" href="https://www.wrha.gov.jm/">Visit Official WRHA Website</a><a class="btn small" target="_blank" rel="noopener" href="https://jasdis876.github.io/JASDIS-Resource-Center/#home">More Resources · Visit the JASDIS Resource Centre</a><a class="btn small" target="_blank" rel="noopener" href="https://wa.me/18765029756?text=Hello%20I%20want%20a%20website">Want a Website?</a><a class="btn small" target="_blank" rel="noopener" href="https://wa.me/18765029756?text=WRHA%20Resource%20Center%20issue%3A%20">Report an Issue</a></div></div></footer>
+
+<nav class="mobile-nav"><a href="#home"><i>⌂</i>Home</a><a href="#targets"><i>◎</i>Targets</a><a href="#manuals"><i>▤</i>Manuals</a><a href="#partner"><i>▣</i>Partner</a><a href="#services"><i>⌖</i>Services</a></nav>
+
+<button class="gia-fab" id="giaFab"><img src="gia-avatar.svg" alt=""><div><b>Gia</b><span>WRHA quick reference</span></div></button><div class="gia-backdrop" id="giaBackdrop"></div>
+<aside class="gia-drawer" id="giaDrawer" aria-hidden="true"><div class="gia-head"><img src="gia-avatar.svg" alt="Gia"><div><small>WRHA RESOURCE ASSISTANT</small><h2>Gia</h2><p>Source-grounded clinical and programme reminders.</p></div><button class="gia-close" id="giaClose">×</button></div><div class="gia-search-zone"><div class="gia-search"><input id="giaSearch" type="search" placeholder="Ask about syphilis, PITC, STI testing, PrEP…"><button id="giaSearchBtn">→</button></div><div class="gia-chips"><button data-q="sti hiv testing target">🎯 STI testing</button><button data-q="hospital pitc target">🏥 PITC</button><button data-q="syndromic management yeast bv">🩺 STI syndromes</button><button data-q="facility clinic sti">📝 Form reminder</button></div></div><div class="gia-results" id="giaResults"><div class="gia-welcome"><h3>Hi, I’m Gia.</h3><p>I can search the bundled manuals and provide verified programme reminders. I do not invent denominators, targets or treatment regimens.</p></div></div><div class="gia-footer">Local source-grounded quick reference</div></aside>
+
+<script>
+const BASE='./';
+const MANUALS=[{"id":"prep","tag":"PrEP","title":"PrEP Handbook 2023","desc":"National PrEP guidance.","url":"https://hstu.moh.gov.jm/wp-content/uploads/2024/02/Prep-Handbook-Complete_final_October-9-2023-1.pdf","cover":"prep.png"},{"id":"sti","tag":"STI","title":"Practical Case Management of Common STI Syndromes Handbook 2026","desc":"Current 2026 practical STI syndrome handbook.","url":"https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Handbook_2026.pdf","cover":"sti.png"},{"id":"tb","tag":"TB","title":"Guidelines for the Management of Tuberculosis in the Jamaican Population 2021","desc":"National TB management guidance.","url":"https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TB_Guidelines_2021.pdf","cover":"tb.png"},{"id":"pmtct","tag":"PMTCT","title":"Guidelines for the Prevention of Vertical Transmission of HIV & Syphilis 2020","desc":"PMTCT / vertical transmission guidance.","url":"https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PMTCT_Vertical_Transmission_Guidelines_2020.pdf","cover":"pmtct.png"}];
+const TARGETS={
+"sti hiv testing target":{title:"STI / FP HIV testing",body:"Target trajectory: ≥75% by Month 3, ≥90% by Month 6, then progress toward 100%. Review every eligible STI/FP attendee who did not receive HIV testing and document the reason/action."},
+"hospital pitc target":{title:"Hospital PITC",body:"Target: ≥80% of eligible hospital admissions by Month 6. Map missed opportunities by ward/service/shift and provide clinician feedback."},
+"syndromic management yeast bv":{title:"STI syndromic management",body:"Use the national STI manual for syndrome-based assessment and management. Vaginal discharge assessment may include candidiasis/yeast and bacterial vaginosis where clinically applicable. Open the STI manual for exact diagnostic and treatment guidance."},
+"facility clinic sti":{title:"Facility + Clinic form reminder",body:"Where the prescribed reporting form asks for Facility and Clinic, record the actual facility and use STI as the clinic/service when the attendance was at the STI clinic. Parish CI/DIO oversight should check documentation and missed-test follow-up."}
+};
+let services=[], knowledge=null, deferredInstall=null;
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function renderManuals(){ $('#manualGrid').innerHTML=MANUALS.map(m=>`<article class="manual-card"><a href="${m.url}" target="_blank" rel="noopener noreferrer" aria-label="Open ${esc(m.title)}" style="text-decoration:none;color:inherit"><div class="cover"><img src="${m.cover}" alt="${esc(m.title)}"></div><div class="manual-body"><span class="tag">${m.tag}</span><h3>${m.title}</h3><p>${m.desc}</p></a><div class="manual-body" style="padding-top:0"><div class="qr-actions"><a class="btn primary small" target="_blank" rel="noopener noreferrer" href="${m.url}">Open Actual Manual ↗</a><button class="btn small" onclick="askGia('${m.title.replace(/'/g, "\\'")}')">Ask Gia</button></div></div></article>`).join(''); }
+
+function renderServices(){
+ const q=($('#serviceSearch').value||'').toLowerCase(), parish=$('#parishFilter').value, sf=$('#serviceFilter').value;
+ const list=services.filter(x=>{
+   const sv=(x.services||[]).join(' ').toLowerCase();
+   return (!parish||x.parish===parish)&&(!q||[x.name,x.parish,x.address,sv].join(' ').toLowerCase().includes(q))&&(!sf||sv.includes(sf));
+ });
+ $('#serviceGrid').innerHTML=list.length?list.map(x=>`<article class="service-card"><div class="parish">${esc(x.parish||'')}</div><h3>${esc(x.name||'')}</h3><p>${esc(x.address||'')}</p><div class="pills">${(x.services||[]).map(v=>`<span class="pill">${esc(v)}</span>`).join('')}</div><div class="qr-actions"><a class="btn primary small" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((x.name||'')+' '+(x.address||''))}">Directions</a>${x.source?`<a class="btn small" target="_blank" rel="noopener" href="${esc(x.source)}">Source</a>`:''}</div></article>`).join(''):'<p>No matching services found.</p>';
+}
+async function init(){
+ renderManuals();
+ try{ const r=await fetch('services.json',{cache:'no-store'}); services=await r.json(); }catch(e){ services=[]; }
+ try{ const r=await fetch('knowledge.json',{cache:'no-store'}); knowledge=await r.json(); }catch(e){}
+ const parishes=[...new Set(services.map(x=>x.parish).filter(Boolean))].sort();
+ $('#parishFilter').innerHTML='<option value="">All parishes</option>'+parishes.map(p=>`<option>${esc(p)}</option>`).join('');
+ renderServices();
+}
+$('#serviceSearch').addEventListener('input',renderServices); $('#parishFilter').addEventListener('change',renderServices); $('#serviceFilter').addEventListener('change',renderServices);
+
+function openGia(){ $('#giaBackdrop').classList.add('open'); $('#giaDrawer').classList.add('open'); $('#giaDrawer').setAttribute('aria-hidden','false'); document.body.classList.add('lock'); }
+function closeGia(){ $('#giaBackdrop').classList.remove('open'); $('#giaDrawer').classList.remove('open'); $('#giaDrawer').setAttribute('aria-hidden','true'); document.body.classList.remove('lock'); }
+$('#giaFab').onclick=openGia; $('#giaClose').onclick=closeGia; $('#giaBackdrop').onclick=closeGia;
+
+function searchKnowledge(q){
+ if(!knowledge?.pages) return null;
+ const toks=q.toLowerCase().split(/\W+/).filter(w=>w.length>2);
+ const hits=knowledge.pages.map(p=>({p,score:toks.reduce((a,t)=>a+(String(p.text||'').toLowerCase().includes(t)?1:0),0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
+ return hits;
+}
+function runGia(raw){
+ const q=(raw||'').toLowerCase().trim();
+ for(const [k,v] of Object.entries(TARGETS)){ if(q.includes(k)||k.split(' ').filter(w=>w.length>3).every(w=>q.includes(w))){ $('#giaResults').innerHTML=`<div class="gia-answer"><h3>${v.title}</h3><p>${v.body}</p></div>`; return; } }
+ if(/sti.*test|hiv.*sti|100%.*sti/.test(q)){ const v=TARGETS["sti hiv testing target"]; $('#giaResults').innerHTML=`<div class="gia-answer"><h3>${v.title}</h3><p>${v.body}</p></div>`; return; }
+ if(/pitc|hospital.*admission/.test(q)){ const v=TARGETS["hospital pitc target"]; $('#giaResults').innerHTML=`<div class="gia-answer"><h3>${v.title}</h3><p>${v.body}</p></div>`; return; }
+ if(/yeast|candid|bacterial vaginosis|\bbv\b|syndrom/.test(q)){ const v=TARGETS["syndromic management yeast bv"]; $('#giaResults').innerHTML=`<div class="gia-answer"><h3>${v.title}</h3><p>${v.body}</p></div>`; return; }
+ if(/facility.*clinic|clinic.*sti|form/.test(q)){ const v=TARGETS["facility clinic sti"]; $('#giaResults').innerHTML=`<div class="gia-answer"><h3>${v.title}</h3><p>${v.body}</p></div>`; return; }
+ const hits=searchKnowledge(q);
+ if(hits?.length){ $('#giaResults').innerHTML=`<div class="gia-answer"><h3>Manual guidance</h3><p>I found relevant source pages. Open the manual for full context.</p><ul>${hits.map(h=>`<li>${esc(h.p.manual||'Manual')} · PDF page ${esc(h.p.pdfPage||'')} — ${esc(String(h.p.text||'').slice(0,220))}…</li>`).join('')}</ul></div>`; return; }
+ $('#giaResults').innerHTML='<div class="gia-answer"><h3>I could not verify that from the loaded sources.</h3><p>Try a more specific clinical or programme term. I will not invent a target, denominator or regimen.</p></div>';
+}
+function askGia(q){openGia(); $('#giaSearch').value=q; runGia(q)}
+$('#giaSearchBtn').onclick=()=>runGia($('#giaSearch').value); $('#giaSearch').addEventListener('keydown',e=>{if(e.key==='Enter')runGia(e.target.value)});
+document.querySelectorAll('.gia-chips button').forEach(b=>b.onclick=()=>{$('#giaSearch').value=b.dataset.q;runGia(b.dataset.q)});
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e});
+$('#installBtn').onclick=async()=>{if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null}else alert('Use your browser menu and choose Install app / Add to Home screen.');};
+if('serviceWorker'in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=7').catch(console.error));
+
+// Always open/reload at top unless the user deliberately follows an in-page anchor during the session.
+if('scrollRestoration'in history) history.scrollRestoration='manual';
+window.addEventListener('pageshow',e=>{ if(!location.hash || e.persisted){ history.replaceState(null,'',location.pathname+location.search); window.scrollTo(0,0); }});
+window.addEventListener('load',()=>{ if(!location.hash){window.scrollTo(0,0);} });
+
+init();
+</script>
+</body>
+</html>
